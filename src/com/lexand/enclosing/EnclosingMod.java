@@ -1,10 +1,7 @@
 package com.lexand.enclosing;
 
 import com.intellij.openapi.actionSystem.DataContext;
-import com.intellij.openapi.editor.CaretModel;
-import com.intellij.openapi.editor.Document;
-import com.intellij.openapi.editor.Editor;
-import com.intellij.openapi.editor.SelectionModel;
+import com.intellij.openapi.editor.*;
 import com.intellij.openapi.editor.actionSystem.EditorActionManager;
 import com.intellij.openapi.editor.actionSystem.TypedAction;
 import com.intellij.openapi.editor.actionSystem.TypedActionHandler;
@@ -78,19 +75,12 @@ public class EnclosingMod implements ModuleComponent {
                 int pairInd = Arrays.binarySearch(PAIRED_CHARS, charTyped) + 1;
                 char paired = (pairInd > 0) ? PAIRED_CHARS[pairInd] : charTyped;
 
-                int[] selectionStarts = selectionModel.getBlockSelectionStarts();
-                int[] selectionEnds = selectionModel.getBlockSelectionEnds();
-
-                int counts = Math.min(
-                        selectionStarts.length,
-                        selectionEnds.length);
-
-                for (int i = counts - 1; i >= 0; --i) {
-                    document.insertString(selectionEnds[i], String.valueOf(paired));
-                    document.insertString(selectionStarts[i], String.valueOf(charTyped));
+                for (Caret caret : caretModel.getAllCarets()) {
+                    if (caret.hasSelection()) {
+                        document.insertString(caret.getSelectionStart(), String.valueOf(charTyped));
+                        document.insertString(caret.getSelectionEnd(), String.valueOf(paired));
+                    }
                 }
-
-                caretModel.moveToOffset(selectionEnds[selectionEnds.length - 1] + counts * 2 - 1);
 
             }
             else {
