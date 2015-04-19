@@ -71,25 +71,26 @@ public class EnclosingMod implements ModuleComponent {
 
             if (document.isWritable() &&
                     (Arrays.binarySearch(CHARS, charTyped) >= 0) &&
-                    selectionModel.hasSelection() &&
-                    !selectionModel.hasBlockSelection()
-                    ) {
+                    selectionModel.hasSelection()) {
 
                 CaretModel caretModel = editor.getCaretModel();
 
                 int pairInd = Arrays.binarySearch(PAIRED_CHARS, charTyped) + 1;
                 char paired = (pairInd > 0) ? PAIRED_CHARS[pairInd] : charTyped;
 
-                int startSelection = selectionModel.getSelectionStart();
-                int endSelection = selectionModel.getSelectionEnd();
+                int[] selectionStarts = selectionModel.getBlockSelectionStarts();
+                int[] selectionEnds = selectionModel.getBlockSelectionEnds();
 
-                document.replaceString(
-                        startSelection,
-                        endSelection,
-                        charTyped + selectionModel.getSelectedText() + paired
-                );
+                int counts = Math.min(
+                        selectionStarts.length,
+                        selectionEnds.length);
 
-                caretModel.moveToOffset(endSelection + 2);
+                for (int i = counts - 1; i >= 0; --i) {
+                    document.insertString(selectionEnds[i], String.valueOf(paired));
+                    document.insertString(selectionStarts[i], String.valueOf(charTyped));
+                }
+
+                caretModel.moveToOffset(selectionEnds[selectionEnds.length - 1] + counts * 2 - 1);
 
             }
             else {
