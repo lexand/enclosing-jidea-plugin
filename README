@@ -6,6 +6,12 @@ Previously I was working with NetBeans IDE. And it has very simple very useful b
 You just select some portion of text and press one of predefined character " ( { [ ' ` and your
 selection will be enclosed with typed character.
 
+Change notes
+
+1.0.1
+* Support multi-caret mode
+
+1.0
 * Plugin does not work in "Column selection mode".
 * Compatible with other JetBrains products
 

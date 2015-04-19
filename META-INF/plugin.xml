@@ -5,8 +5,16 @@
     <vendor email="dorogikh.alexander@gmail.com">Alexandr Dorogikh</vendor>
 
     <description><![CDATA[
-      Plugin for enclosing selection with specified character (NetBeans analog)<br>
-      Characters used for enclosing ', ", (, {, [, `.
+      Plugin for enclosing selection with specified character (NetBeans analog)<br/>
+      Characters used for enclosing ', ", (, {, [, `.<br/><br/>
+      Change notes<br/><br/>
+      <b>1.0.1</b>
+      <ul><li> Support multi-caret mode</li></ul>
+      <b>1.0</b>
+      <ul>
+        <li>Plugin does not work in "Column selection mode".</li>
+        <li>Compatible with other JetBrains products</li>
+      </ul>
       ]]></description>
 
     <change-notes><![CDATA[
