@@ -8,6 +8,9 @@ selection will be enclosed with typed character.
 
 Change notes
 
+**1.0.3**
+* Fixed version number
+
 **1.0.2**
 * Build with gradle
 * Removed deprecated API

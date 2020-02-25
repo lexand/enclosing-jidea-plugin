@@ -4,7 +4,7 @@ plugins {
 }
 
 group 'com.lexand.enclosing'
-version '1.0.2'
+version '1.0.3'
 
 sourceCompatibility = 1.8
 
@@ -22,7 +22,9 @@ intellij {
 }
 patchPluginXml {
     changeNotes """
-       <b>1.0.2</b>
+      <b>1.0.3</b>
+      <ul><li> Fixed version number</li></ul>
+      <b>1.0.2</b>
       <ul>
       <li> Build with gradle</li>
       <li> Removed deprecated API</li>
