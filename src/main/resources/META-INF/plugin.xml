@@ -1,0 +1,46 @@
+<idea-plugin>
+    <id>com.lexand.enclosing</id>
+    <name>Enclosing Plugin</name>
+    <version>1.0.1</version>
+    <vendor email="dorogikh.alexander@gmail.com">Oleksandr Dorogyh</vendor>
+
+    <description><![CDATA[
+      Plugin for enclosing selection with specified character (NetBeans analog)<br/>
+      Characters used for enclosing ', ", (, {, [, `.<br/><br/>
+      ]]></description>
+
+    <change-notes><![CDATA[
+      <b>1.0.2</b>
+      <ul>
+      <li> Build with gradle</li>
+      <li> Removed deprecated API</li>
+      </ul>
+      <b>1.0.1</b>
+      <ul><li> Support multi-caret mode</li></ul>
+      <b>1.0</b>
+      <ul>
+        <li> Plugin does not work in "Column selection mode".</li>
+        <li> Compatible with other JetBrains products</li>
+      </ul>
+            ]]>
+    </change-notes>
+
+
+    <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/plugin_compatibility.html
+         on how to target different products -->
+    <depends>com.intellij.modules.platform</depends>
+
+    <extensions defaultExtensionNs="com.intellij">
+        <!-- Add your extensions here -->
+    </extensions>
+
+    <actions>
+        <!-- Add your actions here -->
+    </actions>
+
+    <module-components>
+        <component>
+            <implementation-class>com.lexand.enclosing.EnclosingMod</implementation-class>
+        </component>
+    </module-components>
+</idea-plugin>

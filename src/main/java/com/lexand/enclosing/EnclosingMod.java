@@ -2,7 +2,6 @@ package com.lexand.enclosing;
 
 import com.intellij.openapi.actionSystem.DataContext;
 import com.intellij.openapi.editor.*;
-import com.intellij.openapi.editor.actionSystem.EditorActionManager;
 import com.intellij.openapi.editor.actionSystem.TypedAction;
 import com.intellij.openapi.editor.actionSystem.TypedActionHandler;
 import com.intellij.openapi.module.Module;
@@ -23,34 +22,19 @@ public class EnclosingMod implements ModuleComponent {
     public EnclosingMod(Module module) {
     }
 
-    public void initComponent() {
-        // insert component initialization logic here
-    }
-
-    public void disposeComponent() {
-        // insert component disposal logic here
-    }
-
     @NotNull
+    @Override
     public String getComponentName() {
         return "Selection Enclose Plugin";
     }
 
-    public void projectOpened() {
-        // called when project is opened
-    }
-
-    public void projectClosed() {
-        // called when project is being closed
-    }
-
+    @Override
     public void moduleAdded() {
-        EditorActionManager manager = EditorActionManager.getInstance();
-        TypedAction typedAction = manager.getTypedAction();
+        TypedAction typedAction = TypedAction.getInstance();
         typedAction.setupHandler(new EncloseTypedAction(typedAction.getHandler()));
     }
 
-    private class EncloseTypedAction implements TypedActionHandler {
+    private static class EncloseTypedAction implements TypedActionHandler {
 
         private final TypedActionHandler defaultHandler;
         private final char[] CHARS = {'"', '\'', '(', '[', '`', '{'};

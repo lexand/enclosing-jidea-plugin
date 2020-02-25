@@ -1,4 +1,4 @@
-/.idea
-/EnclosingPlugin.iml
-/EnclosingPlugin.jar
-/atlassian-ide-plugin.xml
+
+.idea/*
+.gradle/*
+build/*

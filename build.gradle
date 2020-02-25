@@ -1,0 +1,37 @@
+plugins {
+    id 'java'
+    id 'org.jetbrains.intellij' version '0.4.16'
+}
+
+group 'com.lexand.enclosing'
+version '1.0.2'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testCompile group: 'org.testng', name: 'testng', version: '7.1.0'
+}
+
+// See https://github.com/JetBrains/gradle-intellij-plugin/
+intellij {
+    version '2019.3.3'
+}
+patchPluginXml {
+    changeNotes """
+       <b>1.0.2</b>
+      <ul>
+      <li> Build with gradle</li>
+      <li> Removed deprecated API</li>
+      </ul>
+      <b>1.0.1</b>
+      <ul><li> Support multi-caret mode</li></ul>
+      <b>1.0</b>
+      <ul>
+        <li> Plugin does not work in "Column selection mode".</li>
+        <li> Compatible with other JetBrains products</li>
+      </ul>"""
+}
