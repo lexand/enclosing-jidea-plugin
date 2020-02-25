@@ -1,7 +1,7 @@
 <idea-plugin>
     <id>com.lexand.enclosing</id>
     <name>Enclosing Plugin</name>
-    <version>1.0.1</version>
+    <version>1.0.2</version>
     <vendor email="dorogikh.alexander@gmail.com">Oleksandr Dorogyh</vendor>
 
     <description><![CDATA[
